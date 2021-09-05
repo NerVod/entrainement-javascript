@@ -1,0 +1,1 @@
+$('article > label').replaceWith(function (i, e) { return '<button class="realButton">' + e + '</button>';});
