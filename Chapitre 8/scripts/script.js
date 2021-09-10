@@ -22,6 +22,8 @@ $('.articleContainer').load('nouveauxArticles.html');
 
 ///////////////////////////////////////////////////////////////////////////////
 
+/*
+// exemple pour réagir en cas d'erreur,  avec implémentation d'une fonction callback avec la réaction désirée face à l'erreur
 $('.articleContainer')
 .load (
     'pageInconnue.html',
@@ -29,7 +31,43 @@ $('.articleContainer')
     {
         if (statut == 'error')
         {
-            console.log('Une erreur est survenue : + objetAjax.status + ' -> ' + objetAjax.statusText);
+            console.log('Une erreur est survenue : ' + objetAjax.status + ' -> ' + objetAjax.statusText);
         }
     }
 );
+*/
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+/*
+//essai ajout foonction à bibliothèque jQuery fn.extend
+
+$.fn.extend (
+    {
+        coloriser: function(couleur)
+        {
+            this.each((i, e) => {$(e).css('background', couleur);})
+        }
+    }
+)
+
+
+$('article').coloriser('yellow');
+$('article label').coloriser('pink');
+
+*/
+
+
+// essai avec chainage de fonction : il faut ajouter un retour pour que cela fonctionne,
+// sinon, undefined est retourné et les fonctions suivants ne marchent pas
+
+$.fn.extend (
+    {
+        coloriser: function(couleur)
+        {
+            return this.each((i, e) => {$(e).css('background', couleur);});
+        }
+    }
+);
+
